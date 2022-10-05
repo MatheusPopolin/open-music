@@ -1,0 +1,7 @@
+input::-webkit-slider-thumb{
+    appearance: none;
+}
+
+.input_range{
+    width:100%;
+}

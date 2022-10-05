@@ -1,0 +1,55 @@
+.button_default{
+    height: 2rem;
+    padding: 0.5rem;    
+    background-color: var(--color-grey-8);
+    color: var(--color-grey-2);
+    font-weight: var(--font-weight-2);
+    font-size: var(--font-3);   
+    border-style: none;
+    border-radius: var(--radius-1);
+    cursor: pointer;    
+}
+
+.button_default:hover{
+    background-color: var(--color-grey-1);
+    color: var(--color-grey-8);
+}
+
+.button_default_selected{
+    background-color: var(--color-grey-1);
+    color: var(--color-grey-8);
+}
+
+.button_buy{
+    height: 2rem;
+    padding: 0.5rem;    
+    background-color: var(--color-grey-7);
+    color: var(--color-grey-2);
+    font-weight: var(--font-weight-2);
+    font-size: var(--font-3);
+    border-style: none;
+    border-radius: var(--radius-1);
+    cursor: pointer;    
+}
+
+.button_buy:hover{
+    background-color: var(--color-grey-1);
+    color: var(--color-grey-8);
+}
+
+#buttonDark{
+    height: 2rem;
+    padding: 0.5rem;    
+    background-color: var(--color-grey-8);
+    border-style: none;
+    border-radius: var(--radius-1);
+    cursor: pointer;  
+    position: absolute;
+    top: 0;
+    right: 1rem;
+}
+
+#buttonDark:hover{
+    background-color: var(--color-grey-7);
+}
+    
