@@ -7,7 +7,7 @@ function handleDarkMode(){
         if(dmPref) {
             html.classList.add('dark');
             darkModeIcon.classList.toggle("darkSelected");
-            darkModeIcon.src = "/assets/img/sun.png";
+            darkModeIcon.src = "../assets/img/sun.png";
         }
 
     buttonDark.addEventListener("click", ()=>{
@@ -25,9 +25,9 @@ function handleDarkMode(){
         }
 
         if(darkModeIcon.classList.contains("darkSelected")){
-            darkModeIcon.src = "/assets/img/sun.png";
+            darkModeIcon.src = "../assets/img/sun.png";
         } else{
-            darkModeIcon.src = "/assets/img/moon.png"
+            darkModeIcon.src = "../assets/img/moon.png"
         }
     });
 }
