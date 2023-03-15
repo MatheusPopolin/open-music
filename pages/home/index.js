@@ -3,7 +3,7 @@ renderCards(filteredProducts);
 
 let maxPrice = 150
 let price = 150
-document.getElementById("maxPrice").innerText = `Até R$ ${maxPrice.toLocaleString("pt-br",{style: "currency", currency: "BRL"})}`;
+document.getElementById("maxPrice").innerText = `Até ${maxPrice.toLocaleString("pt-br",{style: "currency", currency: "BRL"})}`;
 document.getElementById("priceBar").value = maxPrice
 
 const priceBar = document.getElementById("priceBar");
@@ -12,7 +12,7 @@ priceBar.valueAsNumber = maxPrice;
 priceBar.addEventListener("mousemove",event=>{
     document.getElementById("products").innerHTML = ``;
     price = parseInt(event.target.value);
-    document.getElementById("maxPrice").innerText = `Até R$ ${price.toLocaleString("pt-br",{style: "currency", currency: "BRL"})}`;
+    document.getElementById("maxPrice").innerText = `Até ${price.toLocaleString("pt-br",{style: "currency", currency: "BRL"})}`;
     renderCards(filteredProducts.filter((product) => product.price <= price));
 });
 
