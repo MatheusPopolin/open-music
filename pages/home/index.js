@@ -1,14 +1,20 @@
 let filteredProducts = [...products];
 renderCards(filteredProducts);
 
-let maxPrice = products.reduce((total, currentValue) => {
-    if(currentValue.price>total){
-        return currentValue.price;
-    } else{
-        return total;
-    }
-},0);
-document.getElementById("maxPrice").innerText = `Até R$ ${maxPrice}`;
+let maxPrice = 150
+let price = 150
+document.getElementById("maxPrice").innerText = `Até R$ ${maxPrice.toLocaleString("pt-br",{style: "currency", currency: "BRL"})}`;
+document.getElementById("priceBar").value = maxPrice
+
+const priceBar = document.getElementById("priceBar");
+priceBar.max = maxPrice;
+priceBar.valueAsNumber = maxPrice;
+priceBar.addEventListener("mousemove",event=>{
+    document.getElementById("products").innerHTML = ``;
+    price = parseInt(event.target.value);
+    document.getElementById("maxPrice").innerText = `Até R$ ${price.toLocaleString("pt-br",{style: "currency", currency: "BRL"})}`;
+    renderCards(filteredProducts.filter((product) => product.price <= price));
+});
 
 function createCategoryButtons(category, index){
     let categoryButton = document.createElement("button");
@@ -18,7 +24,7 @@ function createCategoryButtons(category, index){
     categoryButton.id = index;
     
     categoryButton.addEventListener("click",function(event){
-        let id = event.path[0].id;
+        let id = event.target.id;
         document.getElementById("products").innerHTML = ``;
         if(id==0){
             filteredProducts = [...products];
@@ -26,16 +32,6 @@ function createCategoryButtons(category, index){
         } else {
             filteredProducts = products.filter(product=> product.category==id);
         }
-        maxPrice = filteredProducts.reduce((total, currentValue) => {
-            if(currentValue.price>total){
-                return currentValue.price;
-            } else{
-                return total;
-            }
-        },0);
-        priceBar.max = maxPrice;
-        price = priceBar.valueAsNumber;
-        document.getElementById("maxPrice").innerText = `Até R$ ${maxPrice}`;
         renderCards(filteredProducts.filter(product=> product.price<=price));              
     });
     li.appendChild(categoryButton); 
@@ -71,7 +67,7 @@ function createCards(product){
     divBuy.classList.add("buy_container");
     let price = document.createElement("p");
     price.classList.add("text_1")
-    price.innerText = `R$ ${product.price}`;
+    price.innerText = product.price.toLocaleString("pt-br",{style: "currency", currency: "BRL"});
     let buyBotton = document.createElement("button");
     buyBotton.innerText = "Comprar";
     buyBotton.classList.add("button_buy");
@@ -88,16 +84,6 @@ function renderCards(products){
         document.getElementById("products").appendChild(card);        
     })
 }
-
-const priceBar = document.getElementById("priceBar");
-priceBar.max = maxPrice;
-priceBar.valueAsNumber = maxPrice;
-priceBar.addEventListener("mousemove",event=>{
-    document.getElementById("products").innerHTML = ``;
-    let price = parseInt(event.path[0].value);
-    document.getElementById("maxPrice").innerText = `Até R$ ${price}`;
-    renderCards(filteredProducts.filter((product) => product.price <= price));
-});
 
 
 
